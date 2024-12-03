@@ -1,0 +1,145 @@
+<?xml version="1.0"?> 
+
+<sdf version='1.6'>
+  <world name='bfmc_official'>
+    <gravity>0 0 -9.8</gravity>
+    <light name='c1' type='point'>
+      <pose frame=''>0 0 2 0 -0 0</pose>
+      <diffuse>125 125 125 125</diffuse>
+      <specular>50 50 50 50</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+        <linear>0</linear>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <light name='c2' type='point'>
+      <pose frame=''>15 0 2 0 -0 0</pose>
+      <diffuse>125 125 125 125</diffuse>
+      <specular>50 50 50 50</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+        <linear>0</linear>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <light name='c3' type='point'>
+      <pose frame=''>0 -15 2 0 -0 0</pose>
+      <diffuse>125 125 125 125</diffuse>
+      <specular>50 50 50 50</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+        <linear>0</linear>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <light name='c4' type='point'>
+      <pose frame=''>15 -15 2 0 -0 0</pose>
+      <diffuse>125 125 125 125</diffuse>
+      <specular>50 50 50 50</specular>
+      <attenuation>
+        <range>50</range>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+        <linear>0</linear>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+    <model name='track'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>14.68 14.99</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>1</cast_shadows>
+          <transparency>0</transparency>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>14.68 14.99</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>1 1 1 1</emissive>
+            <script>
+              <uri>model://track/materials/scripts</uri>
+              <uri>model://track/materials/textures</uri>
+              <name>BFMC_MATERIAL</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>7.34 -7.495 0 0 -0 0</pose>
+    </model>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>1.37037 -20.0726 2.74517 0 0.319643 1.1482</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
