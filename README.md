@@ -1,4 +1,4 @@
-# BFMC B.E.A.M REPOSITORY
+# OUT OF LANE REPOSITORY
 
 The project contains the entire Gazebo simulator and the documentation needed for the deliverables. 
 
