@@ -34,7 +34,8 @@ import cv2
 import numpy as np
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
-from lane import detect_lane
+from lane_detector import LaneDetector
+from region_of_interest import RegionOfInterest
 
 class CameraHandler():
     # ===================================== INIT==========================================
@@ -53,9 +54,17 @@ class CameraHandler():
         :param data: sensor_msg array containing the image in the Gazsbo format
         :return: nothing but sets [cv_image] to the usefull image that can be use in opencv (numpy array)
         """
+        # top left, bottom left, bottom right, top right
+        top_left = (120, 200)
+        bottom_left = (0,480)
+        bottom_right = (640,480)
+        top_right = (540, 200)
+        roi = RegionOfInterest(top_left, bottom_left, bottom_right, top_right)
+        lane_detector = LaneDetector(roi)
         self.cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
-        cv2.imshow("Frame preview", detect_lane(self.cv_image))
-        key = cv2.waitKey(1)
+        cv2.imshow("Frame preview", lane_detector.display_lines(self.cv_image))
+        cv2.imshow("warp preview", lane_detector.line_detector.warped_image)
+        cv2.waitKey(1)
     
             
 if __name__ == '__main__':
